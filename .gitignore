@@ -1,0 +1,70 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+__MACOSX/
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+# optional lockfiles should NOT be ignored (keep package-lock.json / yarn.lock)
+
+# Build / output
+dist/
+build/
+out/
+.vite/
+.cache/
+.cache-loader/
+.esbuild/
+.tmp/
+
+# Environment / secrets
+.env
+.env.*.local
+*.pem
+secrets.* 
+*.key
+
+# Logs / runtime
+logs/
+*.log
+*.log.*
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage / reports
+coverage/
+.nyc_output/
+report/
+
+# IDEs / editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Editor swap / temp files
+*~ 
+*.swp
+*.swo
+*.tmp
+*.temp
+
+# System files
+desktop.ini
+Icon?
+Thumbs.db
+
+# Other
+.DS_Store?
+npm-debug.log
+yarn-error.log
