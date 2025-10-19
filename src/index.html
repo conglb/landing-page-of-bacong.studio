@@ -4,10 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
+    <meta name="description" content="Giải pháp phần mềm cho cửa hàng, bệnh viện, công ty..." />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#a855f7',
+              background: '#1a1625',
+              card: '#221c2e',
+              muted: '#2d2438',
+              border: '#3d3549',
+            }
+          }
+        }
+      }
+    </script>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/components.css">
 </head>
-<body>
+<body class="bg-background text-gray-100">
     <!-- Header Component -->
     <div id="header">
         <nav>
