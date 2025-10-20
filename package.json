@@ -5,7 +5,8 @@
   "main": "src/index.html",
   "scripts": {
     "start": "live-server src",
-    "build": "echo 'Build step not defined'",
+    "dev": "live-server src --open=/",
+    "build": "node scripts/build.js",
     "test": "echo 'No tests defined'"
   },
   "author": "Your Name",

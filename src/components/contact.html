@@ -1,31 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-</head>
-<body>
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <form action="#" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-
-            <button type="submit">Send Message</button>
-        </form>
-        <div class="contact-info">
-            <h3>Our Address</h3>
-            <p>123 Bacon St, Bacon City, BC 12345</p>
-            <h3>Phone</h3>
-            <p>(123) 456-7890</p>
+<section id="contact" class="py-24 px-4 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto">
+    <div class="max-w-4xl mx-auto text-center bg-gradient-to-br from-primary/10 via-purple-400/10 to-primary/10 rounded-2xl p-12 md:p-16 border border-primary/20">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+        Ready to Start Your Project?
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-gray-400 mb-8">
+        Let's turn your vision into reality. Get in touch with us today and 
+        discover how we can help transform your digital presence.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="mailto:hello@webdevstudio.com" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-primary text-white rounded-lg hover:bg-primary/80 transition-all duration-300 shadow-lg hover:shadow-primary/30">
+            Start Your Project
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </a>
+        <a href="tel:+1234567890" class="inline-flex items-center justify-center gap-2 px-8 py-3 border border-gray-600 rounded-lg hover:bg-gray-800 transition-colors">
+            Schedule a Call
+        </a>
         </div>
-    </section>
-</body>
-</html>
+    </div>
+    </div>
+</section>
