@@ -26,24 +26,74 @@ if (html.classList.contains('dark')) {
 }
 });
 
-// Consultation form //
-const consultationForm = document.getElementById('consultation-form');
-const formMessage = document.getElementById('form-message');
+// Consultation form (IIFE - fixed)
+(function () {
+  function isEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
+  function isPhone(v) {
+    return /^\+?[\d\s\-().]{7,20}$/.test(v);
+  }
 
-consultationForm.addEventListener('submit', (e) => {
-e.preventDefault();
-const email = document.getElementById('email-input').value;
+  function setMessage(text, ok = true) {
+    const el = document.getElementById('form-message');
+    if (!el) return;
+    el.textContent = text;
+    el.classList.remove('text-red-500', 'text-green-600', 'hidden');
+    el.classList.add(ok ? 'text-green-600' : 'text-red-500');
+  }
 
-// Show success message
-formMessage.textContent = `Cảm ơn bạn! Chúng tôi sẽ liên hệ với bạn qua ${email} trong thời gian sớm nhất.`;
-formMessage.classList.remove('hidden');
-formMessage.classList.add('text-green-600', 'dark:text-green-400');
+  async function submitContact(contact) {
+    try {
+      const res = await fetch('http://212.132.112.79:3000/api/submit_contact_from_bacong', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contact })
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        return { ok: true, message: data.message || 'Yêu cầu đã được nhận, cảm ơn bạn!' };
+      } else {
+        return { ok: false, message: data.message || 'Gửi thất bại, thử lại sau. Vui lòng liên hệ trực tiếp congmb@gmail.com' };
+      }
+    } catch (err) {
+      return { ok: false, message: 'Lỗi kết nối tới server. Vui lòng liên hệ trực tiếp congmb@gmail.com' };
+    }
+  }
 
-// Reset form
-consultationForm.reset();
+  function attachForm() {
+    const form = document.getElementById('consultation-form');
+    const input = document.getElementById('email-input');
+    if (!form || !input) return;
+    if (form._attached) return;
+    form._attached = true;
 
-// Hide message after 5 seconds
-setTimeout(() => {
-    formMessage.classList.add('hidden');
-}, 5000);
-});
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const val = input.value.trim();
+      if (!val) {
+        setMessage('Vui lòng nhập email hoặc số điện thoại.', false);
+        return;
+      }
+      if (!isEmail(val) && !isPhone(val)) {
+        setMessage('Vui lòng nhập email hợp lệ hoặc số điện thoại.', false);
+        return;
+      }
+
+      setMessage('Đang gửi...', true);
+      const result = await submitContact(val);
+      if (result.ok) {
+        setMessage(result.message, true);
+        input.value = '';
+      } else {
+        setMessage(result.message, false);
+      }
+    });
+  }
+
+  window.addEventListener('includes:loaded', attachForm);
+  window.addEventListener('DOMContentLoaded', () => {
+    // if components already inline
+    setTimeout(attachForm, 150);
+  });
+})();
