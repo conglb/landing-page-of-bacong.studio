@@ -47,11 +47,11 @@ if (html.classList.contains('dark')) {
     try {
       const res = await fetch('http://212.132.112.79:3000/api/submit_contact_from_bacong', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ contact })
+        headers: { 'Content-Type': 'text/plain' },
+        body: contact 
       });
-      const data = await res.json();
-      if (res.ok && data.success) {
+      const data = await res;
+      if (res.ok) {
         return { ok: true, message: data.message || 'Yêu cầu đã được nhận, cảm ơn bạn!' };
       } else {
         return { ok: false, message: data.message || 'Gửi thất bại, thử lại sau. Vui lòng liên hệ trực tiếp congmb@gmail.com' };
