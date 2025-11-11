@@ -54,7 +54,7 @@ async function build() {
   await fs.writeFile(path.join(OUT, 'index.html'), html, 'utf8');
 
   // copy static assets (styles, scripts, assets, components if needed)
-  const toCopy = ['styles', 'scripts', 'assets'];
+  const toCopy = ['styles', 'scripts', 'assets', 'components'];
   for (const name of toCopy) {
     const srcPath = path.join(SRC, name);
     try {
