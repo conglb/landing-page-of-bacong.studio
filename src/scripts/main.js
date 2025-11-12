@@ -45,14 +45,14 @@ if (html.classList.contains('dark')) {
 
   async function submitContact(contact) {
     try {
-      const res = await fetch('http://212.132.112.79:3000/api/submit_contact_from_bacong', {
+      const res = await fetch('https://dev.congsoft.tech/api/submit_contact_from_bacong', {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain' },
         body: contact 
       });
       const data = await res;
       if (res.ok) {
-        return { ok: true, message: data.message || 'Yêu cầu đã được nhận, cảm ơn bạn!' };
+        return { ok: true, message: data.message || 'Yêu cầu đã được gửi đi, cảm ơn bạn!' };
       } else {
         return { ok: false, message: data.message || 'Gửi thất bại, thử lại sau. Vui lòng liên hệ trực tiếp congmb@gmail.com' };
       }
